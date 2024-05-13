@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  redis-operator:
+    build: .
+    image: schoolofdevops/redis-operator:latest
+    environment:
+      KUBECONFIG: /root/.kube/config
+    volumes:
+      - ~/.kube:/root/.kube
+    command: kopf run /app/redis_operator.py
+

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-operator
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-operator
+  template:
+    metadata:
+      labels:
+        app: redis-operator
+    spec:
+      containers:
+      - name: redis-operator
+        image: schoolofdevops/redis-operator:latest
+        imagePullPolicy: Always
+      serviceAccountName: redis-operator

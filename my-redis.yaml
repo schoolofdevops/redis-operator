@@ -1,0 +1,13 @@
+apiVersion: database.example.com/v1
+kind: Redis
+metadata:
+  name: my-redis
+  namespace: default
+spec:
+  masterSize: 1
+  slaveSize: 2
+  image: "redis:6.2.6" # Specify the Redis image version you prefer
+  backupEnabled: true
+  backupSchedule: "0 */6 * * *"  # Schedule backups every 6 hours
+  persistentVolumeSize: "200Mi"    # Specify the size for the persistent volume
+
